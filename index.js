@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 require('dotenv').config();
 const cors = require('cors');
 const port = process.env.PORT||5000;
@@ -34,6 +34,24 @@ async function run() {
        const result=await cursor.toArray();
       res.send(result);
      })
+
+    //find by id
+    app.get('/toys/:id', async(req, res) => {
+      const id= req.params.id;
+      const query={ _id: new ObjectId(id)};
+      
+      const options = {
+       
+        // Include only the `title` and `imdb` fields in the returned document
+        projection: { picture1:1, name1:1, SellerName1:1, SellerEmail1:1, price1:1, Ratings1:1, Stock1:1,Description1:1,picture2:1, name2:1, SellerName2:1, SellerEmail2:1, price2:1, Ratings2:1, Stock2:1,Description:1,  },
+      };
+
+
+      const result=await catagoryCollection.findOne(query,options) ;
+      res.send(result);
+     })
+
+
 
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
