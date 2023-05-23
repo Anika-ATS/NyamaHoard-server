@@ -53,14 +53,28 @@ async function run() {
      })
 
      //AddaToy collection
+     //get data from second db conditional email
+     app.get('/AddAtoy', async(req, res) => {
+      console.log(req.query.email);
+      // console.log(req.query);
+      let query = {};
+     
+      if(req.query?.email)
+      {
+          query={email:req.query.email};
+      }
+      const result=await ADDaToyCollection.find(query).toArray() ;
+
+      res.send(result);
+
+     })
+
+     //send data from client to server data
      app.post('/AddAtoy', async(req, res) => {
        const AddaToy=req.body;
        console.log(AddaToy);
        const result=await ADDaToyCollection.insertOne(AddaToy);
        res.send(result);
-
-
-
 
 
      })
