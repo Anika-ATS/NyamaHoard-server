@@ -78,8 +78,18 @@ async function run() {
 
 
      })
+    //  //update
+    //  app.put('/AddAtoy/:id', async(req, res) => {
+    //   const ToyUpdate=req.body;
+      
+    //   // res.send(result);
+    // })
+
+
+
+
      //delete
-     //send data from client to server data
+     
      app.delete('/AddAtoy/:id', async(req, res) => {
       const id=req.params.id;
       const query={_id: new ObjectId(id)}
@@ -112,4 +122,3 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
 console.log(`Example app listening on port ${port}`)
 })
-// tabassumanika210,pass--8NxSgrnTIJ692oEz
