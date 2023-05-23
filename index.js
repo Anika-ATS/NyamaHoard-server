@@ -27,6 +27,7 @@ async function run() {
     await client.connect();
     //mongodb
     const catagoryCollection = client.db("Nyama").collection("CatagoryCard");
+    const ADDaToyCollection = client.db("Nyama").collection("ADDaToy");
 
     
      app.get('/toy', async(req, res) => {
@@ -50,6 +51,22 @@ async function run() {
       const result=await catagoryCollection.findOne(query,options) ;
       res.send(result);
      })
+
+     //AddaToy collection
+     app.post('/AddAtoy', async(req, res) => {
+       const AddaToy=req.body;
+       console.log(AddaToy);
+       const result=await ADDaToyCollection.insertOne(AddaToy);
+       res.send(result);
+
+
+
+
+
+     })
+
+
+
 
 
 
