@@ -78,6 +78,16 @@ async function run() {
 
 
      })
+     //delete
+     //send data from client to server data
+     app.delete('/AddAtoy/:id', async(req, res) => {
+      const id=req.params.id;
+      const query={_id: new ObjectId(id)}
+      const result=await ADDaToyCollection.deleteOne(query);
+      res.send(result);
+
+
+    })
 
 
 
