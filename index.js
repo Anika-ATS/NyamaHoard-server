@@ -1,3 +1,4 @@
+
 const express = require('express');
 const app = express();
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
@@ -17,6 +18,34 @@ app.use(cors(corsOptions))
 
 
 app.use(express.json());
+
+
+// -------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // console.log(process.env.DB_PASS)
 
